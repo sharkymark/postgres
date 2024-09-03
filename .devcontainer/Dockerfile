@@ -10,7 +10,7 @@ WORKDIR /app
 COPY . /app
 
 # get utilities in the container
-RUN apt-get update && apt-get install -y procps ssh git net-tools htop sudo
+RUN apt-get update && apt-get install -y procps ssh git net-tools htop sudo postgresql-client
 
 # Install pip dependencies
 # RUN pip install --no-cache-dir --upgrade pip && pip install pandas jupyterlab ipykernel

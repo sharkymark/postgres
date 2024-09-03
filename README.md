@@ -5,11 +5,14 @@ A Python container and a Postgres container
 ## Functionality
 1. mounts volume of the postgres data directory to the working directory
 1. Creates user, password and db from config in docker-compose.yml
+1. Runs `init.sql` to create a database and table
 1. Starts Postgres
 
 ## psql client
 
-Add to your local machine like mac to test connectivity
+psql is added to the Python contactiner or add to your local machine like mac to test connectivity
+
+### local machine 
 
 ```sh
 brew install libpq
@@ -25,6 +28,22 @@ brew link --force libpq
 
 ```sh
 psql -h localhost -p 5432 -U postgres -d postgres
+```
+
+### commands
+
+* list users `\du`
+* list database `\l`
+* contact to a database `\c <database>`
+* list tables `\dt`
+* list schemas `\d <table name>`
+
+### add data
+
+This insert statement could have been added to `init.sql` but here we demonstrate how to run with `psql` from the project directory in the Python container
+
+```sh
+psql -h localhost -p 5432 -U postgres -d mydatabase -f insert.sql
 ```
 
 ## Resources
