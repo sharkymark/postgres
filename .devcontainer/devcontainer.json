@@ -1,0 +1,28 @@
+{
+	"name": "Python 3 & PostgreSQL",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "mounts": [
+  ], 
+  "forwardPorts": [5001,5432],     
+  "containerEnv": {
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "GitHub.copilot",
+        "ms-python.pylance",
+        "ms-ossdata.postgres"
+      ],
+      "settings": { 
+        "terminal.integrated.shell.linux": "/bin/bash"
+      }  
+    }
+  },
+  "postCreateCommand": "echo \"nothing in postCreateCommand...\"",
+  "postStartCommand": "echo \"starting web server in postStartCommand...\" && python3 -m http.server 5001"
+  }
+
+  

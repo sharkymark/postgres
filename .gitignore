@@ -1,0 +1,4 @@
+# ignore postgres data directory and contents. first time app runs, it is created
+# need a placeholder file for the directory name, without contents, to be saved
+/postgres-data/*
+!/postgres-data/.gitkeep
