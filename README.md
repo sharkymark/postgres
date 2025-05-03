@@ -72,20 +72,24 @@ This repository also includes a simple Flask web application (`app.py`) that pro
 
 **Running the Application:**
 
-1.  Ensure the Docker containers are running (`docker-compose up -d`).
-2.  Make sure you are inside the development container's shell. If you used VS Code's "Reopen in Container" feature, you are likely already there. Otherwise, use:
-    ```bash
-    docker exec -it postgres_devcontainer-app-1 /bin/bash
-    ```
-3.  Install the Python dependencies:
+1.  Starting the devcontainer, installs Python dependencies and starts the Flask server.
+1.  Alternatively, you can manually install the dependencies and run the Flask server.
+1.  Run the Flask development server:
     ```bash
     pip install -r requirements.txt
+    flask run --host=0.0.0.0 --port=5001
     ```
-4.  Run the Flask development server:
-    ```bash
-    flask run --host=0.0.0.0 --port=5000
-    ```
-5.  Open your web browser and navigate to `http://localhost:5000`.
+1.  Open your web browser and navigate to `http://localhost:5001`.
+
+## Dev container
+This project uses a dev container to provide a consistent development environment. The dev container is defined in the `.devcontainer` directory and includes the following features:
+*  Python
+*  PostgreSQL
+*  Installs Python dependencies like Flask
+*  GitHub CLI and authenticates the user with the environment variable `GITHUB_PERSONAL_ACCESS_TOKEN`
+*  Aider and Goose AI coding agents
+*  Mounts `.gitignore_global` to the container's home directory
+*  Mounts the Postgres data directory to the working directory 
 
 ## Resources
 
