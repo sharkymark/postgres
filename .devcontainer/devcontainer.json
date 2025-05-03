@@ -4,10 +4,15 @@
 	"service": "app",
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "mounts": [
-  ], 
-  "forwardPorts": [5001],     
+    "source=${localEnv:HOME}/.gitignore_global,target=/root/.gitignore_global,type=bind,consistency=cached"
+  ],
+  "forwardPorts": [5001],
   "containerEnv": {
-    "GITHUB_PERSONAL_ACCESS_TOKEN": "${localEnv:GITHUB_PERSONAL_ACCESS_TOKEN}"
+    "GITHUB_PERSONAL_ACCESS_TOKEN": "${localEnv:GITHUB_PERSONAL_ACCESS_TOKEN}",
+    "FLASK_APP": "app.py", // Added for Flask CLI
+    "FLASK_RUN_HOST": "0.0.0.0",
+    "FLASK_RUN_PORT": "5001",
+    "DATABASE_URL": "postgresql://postgres:postgres@db:5432/mydatabase" // Also set here for consistency
   },
   "customizations": {
     "vscode": {
@@ -25,7 +30,6 @@
     }
   },
   "postCreateCommand": "echo \"nothing in postCreateCommand...\"",
-  "postStartCommand": "echo \"${GITHUB_PERSONAL_ACCESS_TOKEN}\" | gh auth login --with-token && echo 'Authentication successful' && git config --global --add safe.directory \"$(git rev-parse --show-toplevel)\" && echo \"starting web server in postStartCommand...\" && python3 -m http.server 5001"
-  }
-
-  
+  // Updated postStartCommand to run Flask app
+  "postStartCommand": "echo \"${GITHUB_PERSONAL_ACCESS_TOKEN}\" | gh auth login --with-token && echo 'Authentication successful' && git config --global --add safe.directory \"$(git rev-parse --show-toplevel)\" && echo \"Starting Flask server in postStartCommand...\" && flask run"
+}

@@ -59,6 +59,38 @@ This insert statement could have been added to `init.sql` but here we demonstrat
 psql -h localhost -p 5432 -U postgres -d mydatabase -f insert.sql
 ```
 
+## Flask Web Application
+
+This repository also includes a simple Flask web application (`app.py`) that provides a web interface to interact with the `mytable` data in the PostgreSQL database.
+
+**Features:**
+
+*   View all entries in the table.
+*   Add new entries (Name, Email, Started On timestamp).
+*   Edit existing entries.
+*   Delete entries.
+
+**Running the Application:**
+
+1.  Starting the devcontainer, installs Python dependencies and starts the Flask server.
+1.  Alternatively, you can manually install the dependencies and run the Flask server.
+1.  Run the Flask development server:
+    ```bash
+    pip install -r requirements.txt
+    flask run --host=0.0.0.0 --port=5001
+    ```
+1.  Open your web browser and navigate to `http://localhost:5001`.
+
+## Dev container
+This project uses a dev container to provide a consistent development environment. The dev container is defined in the `.devcontainer` directory and includes the following features:
+*  Python
+*  PostgreSQL
+*  Installs Python dependencies like Flask
+*  GitHub CLI and authenticates the user with the environment variable `GITHUB_PERSONAL_ACCESS_TOKEN`
+*  Aider and Goose AI coding agents
+*  Mounts `.gitignore_global` to the container's home directory
+*  Mounts the Postgres data directory to the working directory 
+
 ## Resources
 
 

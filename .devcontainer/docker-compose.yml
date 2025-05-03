@@ -9,6 +9,11 @@ services:
 
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/mydatabase
+      - FLASK_APP=app.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_RUN_PORT=5001
     networks:
       - devcontainer-net
   db:
