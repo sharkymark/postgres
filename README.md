@@ -59,6 +59,34 @@ This insert statement could have been added to `init.sql` but here we demonstrat
 psql -h localhost -p 5432 -U postgres -d mydatabase -f insert.sql
 ```
 
+## Flask Web Application
+
+This repository also includes a simple Flask web application (`app.py`) that provides a web interface to interact with the `mytable` data in the PostgreSQL database.
+
+**Features:**
+
+*   View all entries in the table.
+*   Add new entries (Name, Email, Started On timestamp).
+*   Edit existing entries.
+*   Delete entries.
+
+**Running the Application:**
+
+1.  Ensure the Docker containers are running (`docker-compose up -d`).
+2.  Make sure you are inside the development container's shell. If you used VS Code's "Reopen in Container" feature, you are likely already there. Otherwise, use:
+    ```bash
+    docker exec -it postgres_devcontainer-app-1 /bin/bash
+    ```
+3.  Install the Python dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+4.  Run the Flask development server:
+    ```bash
+    flask run --host=0.0.0.0 --port=5000
+    ```
+5.  Open your web browser and navigate to `http://localhost:5000`.
+
 ## Resources
 
 
