@@ -3,12 +3,6 @@ FROM python:3.9-slim
 
 ENV PYTHONUNBUFFERED 1
 
-# Set the working directory in the container
-WORKDIR /app
-
-# Copy the current directory contents into the container at /app
-COPY . /app
-
 # get utilities in the container
 RUN DEBIAN_FRONTEND="noninteractive" apt-get update -y && apt-get install -y \
     procps \
@@ -44,3 +38,4 @@ RUN curl -fsSL https://github.com/block/goose/releases/download/stable/download_
 
 # Install Aider
 RUN curl -LsSf https://aider.chat/install.sh | sh
+
