@@ -12,6 +12,13 @@ A Python container and a Postgres container
 
 psql is added to the Python contactiner or add to your local machine like mac to test connectivity
 
+### from the app container
+
+```sh
+docker exec -it postgres_devcontainer-app-1 /bin/sh
+psql -h db -U postgres -d postgres
+```
+
 ### local machine 
 
 ```sh
@@ -22,6 +29,12 @@ if `psql` is not found, run
 
 ```sh
 brew link --force libpq
+```
+
+### test connection
+
+```sh
+nc -zv localhost 5432
 ```
 
 ### connect
