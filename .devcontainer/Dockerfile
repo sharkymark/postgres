@@ -39,3 +39,6 @@ RUN curl -fsSL https://github.com/block/goose/releases/download/stable/download_
 # Install Aider
 RUN curl -LsSf https://aider.chat/install.sh | sh
 
+# Install Python dependencies
+RUN pip install Flask psycopg2-binary
+
